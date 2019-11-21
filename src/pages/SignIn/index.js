@@ -1,9 +1,11 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Image } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 
 import logo from '~/assets/logo.png';
 
 import Background from '~/components/Background';
+import { signInRequest } from '~/store/modules/auth/actions';
 
 import {
   Container,
@@ -15,10 +17,16 @@ import {
 } from './styles';
 
 export default function SignIn({ navigation }) {
+  const dispatch = useDispatch();
   const passwordRef = useRef();
 
-  function handleSubmit() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
+  const loading = useSelector(state => state.auth.loading);
+
+  function handleSubmit() {
+    dispatch(signInRequest(email, password));
   }
 
   return (
@@ -33,6 +41,8 @@ export default function SignIn({ navigation }) {
             autoCapitalize="none"
             placeholder="Type your e-mail"
             returnKeyType="next"
+            value={email}
+            onChangeText={setEmail}
             onSubmitEditing={() => passwordRef.current.focus()}
           />
 
@@ -43,11 +53,14 @@ export default function SignIn({ navigation }) {
             placeholder="Type your secret password"
             ref={passwordRef}
             returnKeyType="send"
+            value={password}
+            onChangeText={setPassword}
             onSubmitEditing={handleSubmit}
-
           />
 
-          <SubmitButton onPress={handleSubmit}>Log in</SubmitButton>
+          <SubmitButton loading={loading} onPress={handleSubmit}>
+            Log in
+          </SubmitButton>
         </Form>
         <SignLink onPress={() => navigation.navigate('SignUp')}>
           <SignLinkText>Create free account</SignLinkText>
