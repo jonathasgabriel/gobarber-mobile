@@ -64,7 +64,6 @@ export default function SignUp({ navigation }) {
           <FormInput
             icon="lock-outline"
             secureTextEntry
-            keyboardType="email-address"
             placeholder="Type your secret password"
             ref={passwordRef}
             returnKeyType="send"
