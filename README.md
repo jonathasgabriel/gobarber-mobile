@@ -4,9 +4,10 @@ A complete application for scheduling and managing beauty services.
 This client is implemented in  **React-Native**, consumes the backend API available at [gobarber-backend](https://github.com/jonathasgabriel/gobarber-backend) and is used by customers only. The reactjs web application is used by providers only and is available at [gobarber-frontend](https://github.com/jonathasgabriel/gobarber-frontend).
 
 ## features
-- Login with provided id
-- Check in to the gym (up to 5 times in a 7 days window) and view previous check ins
-- Create help orders and view answers
+- Login with email and password
+- View and edit profile
+- View appointments
+- Create and cancel appointments
 
 ## some of the leveraged techs/libs/tools
 - Axios
