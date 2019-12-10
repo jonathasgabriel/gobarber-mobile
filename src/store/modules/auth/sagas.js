@@ -41,6 +41,7 @@ export function* signUp({ payload }) {
       email,
       password,
     });
+    Alert.alert('Account successfully created', 'Please, log in');
   } catch (err) {
     Alert.alert(
       'Sign up failed',
